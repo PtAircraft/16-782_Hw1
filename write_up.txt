@@ -1,0 +1,9 @@
+Use weighted A* to find the path and Dijkstra to set heuristic for the whole map. If robot are cannot find a path from robot to goal temporarily, use greedy search provided.
+
+In A*, a struct named Node is build to save the information for each searched node on the map. Information include x, y, theta, g value, h value, f value, index of predecessor(parent_ID_), prim number(prim_), and index for this node(cur_ID_). A heap named open is built to be open list and a unordered map, which maps node with map index, name closed is built to serve as closed list. I also build my own compare function(compare_func) to make sure the top node of the heap has the smallest f value. 
+
+Similarly, for Dijkstra, a struct named node_h is built to save the information for each node on the map. Information include x, y, f(serve as g value) and current index for this node(cur_ID_). A heap named open_h, like the heap in A*, is built to serve as open list. A global un_ordered map, which maps g value with node index, named heuristic is built to serve as closed list. This map is hold during the whole path finding. Each time we want the heuristic of a node, we can get it with the index of the node from this map. 
+
+Since the heuristic I calculated is relatively good, so I use large epsilon for weighted A*. 
+
+P.S Need to re-mex the planner.cpp for each catch.
